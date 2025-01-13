@@ -4,14 +4,27 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const TabsLayout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          height: 70,
+          paddingTop: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12, // You can adjust this to your desired size
+          fontWeight: 'bold', // Optional: Make the text bold
+        },
+      }}
+    >
       <Tabs.Screen
-        name="Beranda"
+        name="index"
         options={{
+          title: 'Beranda',
           tabBarIcon: ({ focused, color }) => (
             <Ionicons
-              name={'home_outline'}
-              size={24}
+              name={'home-outline'}
+              size={28}
               focused={focused}
               color={color}
             />
@@ -19,12 +32,13 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="Berita"
+        name="news"
         options={{
+          title: 'Berita',
           tabBarIcon: ({ focused, color }) => (
             <Ionicons
               name={'newspaper'}
-              size={24}
+              size={28}
               focused={focused}
               color={color}
             />
