@@ -9,7 +9,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/img.png",
+      "image": "./assets/logo_eMedia.png",
       "resizeMode": "cover"
     },
     "ios": {
