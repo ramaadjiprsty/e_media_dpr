@@ -1,33 +1,32 @@
 {
   "expo": {
-    "name": "emedia_dpr",
+    "name": "E-Media DPR RI",
     "slug": "emedia_dpr",
-    "scheme": "emedia_dpr",
+    "scheme": "emedia-dpr",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/img.png",
+      "resizeMode": "cover"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo_eMedia.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.emedia.dprri"
+      "package": "com.emedia.dpr"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
     ],
     "extra": {
       "router": {

@@ -1,26 +1,16 @@
 import './../global.css';
 import { Stack } from 'expo-router';
 import { Image, TouchableOpacity } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useRef } from 'react';
 
 const RootLayout = () => {
-  const webviewRef = useRef(null);
-
   const headerLeft = () => (
-    <TouchableOpacity className="border" activeOpacity={1}>
+    <TouchableOpacity className="w-full items-center" activeOpacity={1}>
       <Image
         source={require('../assets/logo_eMedia.png')} // Replace with your logo image path
-        style={{ width: 120, height: 80 }} // Adjust size as needed
+        style={{ width: 120, height: 60 }} // Adjust size as needed
         resizeMode="contain"
-        className="border"
+        resizeMethod={'auto'}
       />
-    </TouchableOpacity>
-  );
-
-  const headerRight = () => (
-    <TouchableOpacity onPress={() => onRefresh} activeOpacity={0.5}>
-      <Ionicons name="refresh" size={24} />
     </TouchableOpacity>
   );
 
@@ -30,7 +20,6 @@ const RootLayout = () => {
         name="(tabs)"
         options={{
           headerLeft,
-          // headerRight,
           headerTitle: '',
           headerTitleAlign: 'center',
         }}
