@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BackHandler, View } from 'react-native';
+import { BackHandler } from 'react-native';
 import { WebView } from 'react-native-webview';
 import URLs from '../../constants/url';
 import { StatusBar } from 'expo-status-bar';
+import CustomHeader from '../../components/CustomHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Index = () => {
   const [canGoBack, setCanGoBack] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true);
   const webviewRef = useRef(null);
 
   const handleBackPress = () => {
@@ -32,23 +32,13 @@ const Index = () => {
     setCanGoBack(canGoBack); // Update canGoBack state
   };
 
-  const onRefresh = () => {
+  const triggerBurgerMenu = () => {
     if (webviewRef.current) {
-      setIsRefreshing(true);
-      webviewRef.current.reload(); // Reload the WebView
-      setTimeout(() => setIsRefreshing(false), 2000); // Simulate 2 seconds refresh time
+      webviewRef.current.injectJavaScript(`
+        document.querySelector('.burger-menu').click();
+        true; // Ensures the injection returns something to prevent a crash
+      `);
     }
-  };
-
-  // Handle scroll detection for refresh control trigger
-  const handleScroll = (event) => {
-    const {
-      contentOffset: { y },
-      contentSize: { height },
-      layoutMeasurement: { height: layoutHeight },
-    } = event.nativeEvent;
-
-    setIsAtTop(y <= 0 && height <= layoutHeight);
   };
 
   const INJECTED_JAVASCRIPT = `
@@ -63,24 +53,19 @@ const Index = () => {
     if (midHeaderWrap) {
       midHeaderWrap.style.display = 'none';
     }
+    const containerElement = document.querySelector('.navigation-inner');
+    if (containerElement) {
+      containerElement.style.display = 'none'; // Remove the entire container element
+    }
   })();
 `;
 
   return (
-    <View className="h-full">
-      {/*<ScrollView*/}
-      {/*  contentContainerStyle={{ flex: 1 }}*/}
-      {/*  refreshControl={*/}
-      {/*    <RefreshControl*/}
-      {/*      refreshing={isRefreshing}*/}
-      {/*      onRefresh={onRefresh}*/}
-      {/*      colors={['#9Bd35A', '#689F38']} // Optional: Customize refresh spinner color*/}
-      {/*      enabled={isAtTop} // Only allow refresh when at the top of the ScrollView*/}
-      {/*    />*/}
-      {/*  }*/}
-      {/*  onScroll={handleScroll} // Detect if ScrollView is scrolled to the top*/}
-      {/*  scrollEventThrottle={16} // Throttle scroll events for better performance*/}
-      {/*>*/}
+    <SafeAreaView className="h-full">
+      <CustomHeader
+        headerImage={require('../../assets/logo_eMedia.png')}
+        handlePressMenu={triggerBurgerMenu}
+      />
       <WebView
         ref={webviewRef}
         source={{ uri: URLs.DPR_MEDIA_BERANDA }}
@@ -92,10 +77,10 @@ const Index = () => {
         onNavigationStateChange={handleNavigationStateChange}
         androidLayerType="hardware"
         injectedJavaScript={INJECTED_JAVASCRIPT}
+        domStorageEnabled={true}
       />
-      {/*</ScrollView>*/}
       <StatusBar style="light" />
-    </View>
+    </SafeAreaView>
   );
 };
 

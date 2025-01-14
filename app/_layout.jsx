@@ -4,7 +4,10 @@ import { Image, TouchableOpacity } from 'react-native';
 
 const RootLayout = () => {
   const headerLeft = () => (
-    <TouchableOpacity className="w-full items-center" activeOpacity={1}>
+    <TouchableOpacity
+      className="w-full justify-center items-center"
+      activeOpacity={0.5}
+    >
       <Image
         source={require('../assets/logo_eMedia.png')} // Replace with your logo image path
         style={{ width: 120, height: 60 }} // Adjust size as needed
@@ -19,9 +22,10 @@ const RootLayout = () => {
       <Stack.Screen
         name="(tabs)"
         options={{
-          headerLeft,
-          headerTitle: '',
-          headerTitleAlign: 'center',
+          // headerLeft,
+          // headerTitle: '',
+          // headerTitleAlign: 'center',
+          headerShown: false,
         }}
       />
     </Stack>
