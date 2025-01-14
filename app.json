@@ -10,7 +10,8 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/logo_eMedia.png",
-      "resizeMode": "cover"
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true
