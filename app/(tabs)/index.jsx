@@ -67,17 +67,13 @@ const Index = () => {
         handlePressMenu={triggerBurgerMenu}
       />
       <WebView
-        ref={webviewRef}
+        className={'overflow-hidden'}
         source={{ uri: URLs.DPR_MEDIA_BERANDA }}
         cacheMode="LOAD_CACHE_ELSE_NETWORK"
         cacheEnabled={true}
         javaScriptEnabled={true}
         scalesPageToFit={true}
-        showsHorizontalScrollIndicator={false}
-        onNavigationStateChange={handleNavigationStateChange}
-        androidLayerType="hardware"
         injectedJavaScript={INJECTED_JAVASCRIPT}
-        domStorageEnabled={true}
       />
       <StatusBar style="light" />
     </SafeAreaView>

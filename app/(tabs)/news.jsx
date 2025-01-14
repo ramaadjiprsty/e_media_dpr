@@ -3,10 +3,12 @@ import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import { StatusBar } from 'expo-status-bar';
 import URLs from '../../constants/url';
+import CustomHeader from '../../components/CustomHeader';
 
 export const News = () => {
   return (
     <View className="h-full overflow-hidden">
+      <CustomHeader headerImage={require('../../assets/logo_eMedia.png')} />
       <WebView
         className={'overflow-hidden'}
         source={{ uri: URLs.DPR_MEDIA_BERITA }}
