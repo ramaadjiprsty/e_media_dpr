@@ -1,39 +1,34 @@
 import React from 'react';
-import { View } from 'react-native';
 import WebView from 'react-native-webview';
 import { StatusBar } from 'expo-status-bar';
 import URLs from '../../constants/url';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomHeader from '../../components/CustomHeader';
+import { INJECTED_JAVASCRIPT } from '../../constants/injectedJavascript';
+import useWebViewBackHandler from '../../hooks/useWebViewBackHandler';
 
 export const News = () => {
+  const { webviewRef, handleNavigationStateChange, triggerBurgerMenu } =
+    useWebViewBackHandler();
+
   return (
-    <View className="h-full overflow-hidden">
-      <CustomHeader headerImage={require('../../assets/logo_eMedia.png')} />
+    <SafeAreaView className="h-full overflow-hidden">
+      <CustomHeader
+        headerImage={require('../../assets/logo_eMedia.png')}
+        handlePressMenu={triggerBurgerMenu}
+      />
       <WebView
-        className={'overflow-hidden'}
+        ref={webviewRef}
         source={{ uri: URLs.DPR_MEDIA_BERITA }}
         cacheMode="LOAD_CACHE_ELSE_NETWORK"
         cacheEnabled={true}
         javaScriptEnabled={true}
         scalesPageToFit={true}
-        //manipulate the default theme on webview into light
-        injectedJavaScript={`
-          document.documentElement.setAttribute('data-theme', 'light');
-          var topBar = document.querySelector('.top-bar');
-            if (topBar) {
-              topBar.style.display = 'none';  // Hides the top-bar
-            }
-            // Remove mid-header-wrap and its children
-            const midHeaderWrap = document.querySelector('.mid-header-wrap');
-            if (midHeaderWrap) {
-            midHeaderWrap.style.display = 'none'; // Hide the mid-header-wrap
-            //midHeaderWrap.remove(); use this to completely remove it
-          }
-          true;
-        `}
+        onNavigationStateChange={handleNavigationStateChange}
+        injectedJavaScript={INJECTED_JAVASCRIPT}
       />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 };
 

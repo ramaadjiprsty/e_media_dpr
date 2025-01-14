@@ -12,7 +12,7 @@ const CustomHeader = ({ headerImage, handlePressMenu }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Center Header Image */}
+      {/*Center Header Image */}
       <View className="flex-2 items-center">
         <TouchableOpacity activeOpacity={0.7}>
           <Image
