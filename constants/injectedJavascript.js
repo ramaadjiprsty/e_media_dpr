@@ -4,6 +4,7 @@
  * - Fix unreadable text with forcing the web to light theme
  * - Removing Logo and navigation menu on web
  * - Fix horizontal scrolling
+ * - Remove header content
  */
 
 export const INJECTED_JAVASCRIPT = `
@@ -21,6 +22,10 @@ export const INJECTED_JAVASCRIPT = `
     const containerElement = document.querySelector('.navigation-inner');
     if (containerElement) {
       containerElement.style.display = 'none';
+    }
+    const headerContent = document.querySelector('.page-header-content');
+    if (headerContent) {
+    headerContent.style.display = 'none';
     }
   })();
 `;

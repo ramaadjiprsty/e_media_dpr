@@ -27,7 +27,7 @@ export const News = () => {
         onNavigationStateChange={handleNavigationStateChange}
         injectedJavaScript={INJECTED_JAVASCRIPT}
       />
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </SafeAreaView>
   );
 };

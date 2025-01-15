@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const CustomHeader = ({ headerImage, handlePressMenu }) => {
   return (
-    <View className="flex-row items-center justify-between px-4 h-16 bg-white">
+    <View className="flex-row items-center justify-between px-4 h-16 bg-white border-b border-gray-200">
       {/* Left Menu Icon */}
       <View className="flex-1">
         <TouchableOpacity onPress={handlePressMenu} activeOpacity={0.7}>
