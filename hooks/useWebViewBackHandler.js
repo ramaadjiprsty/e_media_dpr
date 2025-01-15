@@ -10,7 +10,7 @@ const useWebViewBackHandler = () => {
       webviewRef.current.goBack(); // Go back to the previous page in the WebView
       return true; // Prevents the app from closing
     }
-    return false; // If no back history in WebView, allow the default back behavior (exit app)
+    return false; // If no back history in WebView, pressing back will exit the app
   };
 
   const triggerBurgerMenu = () => {

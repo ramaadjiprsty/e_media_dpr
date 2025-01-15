@@ -19,7 +19,6 @@ const Index = () => {
       />
       <WebView
         ref={webviewRef}
-        className={'overflow-hidden'}
         source={{ uri: URLs.DPR_MEDIA_BERANDA }}
         cacheMode="LOAD_CACHE_ELSE_NETWORK"
         cacheEnabled={true}
@@ -28,7 +27,7 @@ const Index = () => {
         onNavigationStateChange={handleNavigationStateChange}
         injectedJavaScript={INJECTED_JAVASCRIPT}
       />
-      <StatusBar style="light" />
+      <StatusBar style="auto"/>
     </SafeAreaView>
   );
 };
