@@ -27,5 +27,9 @@ export const INJECTED_JAVASCRIPT = `
     if (headerContent) {
     headerContent.style.display = 'none';
     }
+    var moreSpace = document.querySelector('.elementor-column[data-id="b5c1e46"]');
+    if (moreSpace) {
+      moreSpace.style.display = 'none';
+    }
   })();
 `;

@@ -19,7 +19,8 @@ const CustomHeader = ({ headerImage, handlePressMenu }) => {
           />
         </TouchableOpacity>
       </View>
-      <View className="flex-1"></View> // make it balance
+      {/* make it balance */}
+      <View className="flex-1"></View>
     </View>
   );
 };
