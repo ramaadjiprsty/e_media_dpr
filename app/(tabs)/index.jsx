@@ -1,14 +1,14 @@
 import React from 'react';
 import { WebView } from 'react-native-webview';
-import URLs from '../../constants/url';
 import { StatusBar } from 'expo-status-bar';
 import CustomHeader from '../../components/CustomHeader';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { INJECTED_JAVASCRIPT } from '../../constants/injectedJavascript';
 import useWebViewBackHandler from '../../hooks/useWebViewBackHandler';
+import { URLs } from '../../constants/url';
 
 const Index = () => {
-  const { webviewRef, handleNavigationStateChange, triggerBurgerMenu } =
+  const { webviewRef, handleNavigationStateChange, triggerBurgerMenu, triggerGalleryMenu } =
     useWebViewBackHandler();
 
   return (
@@ -16,6 +16,7 @@ const Index = () => {
       <CustomHeader
         headerImage={require('../../assets/logo_eMedia.png')}
         handlePressMenu={triggerBurgerMenu}
+        handlePressGallery={triggerGalleryMenu}
       />
       <WebView
         ref={webviewRef}

@@ -8,7 +8,7 @@ import { INJECTED_JAVASCRIPT } from '../../constants/injectedJavascript';
 import useWebViewBackHandler from '../../hooks/useWebViewBackHandler';
 
 export const News = () => {
-  const { webviewRef, handleNavigationStateChange, triggerBurgerMenu } =
+  const { webviewRef, handleNavigationStateChange, triggerBurgerMenu, triggerGalleryMenu } =
     useWebViewBackHandler();
 
   return (
@@ -16,6 +16,7 @@ export const News = () => {
       <CustomHeader
         headerImage={require('../../assets/logo_eMedia.png')}
         handlePressMenu={triggerBurgerMenu}
+        handlePressGallery={triggerGalleryMenu}
       />
       <WebView
         ref={webviewRef}

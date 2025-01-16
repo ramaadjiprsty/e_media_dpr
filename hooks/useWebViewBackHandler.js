@@ -17,7 +17,16 @@ const useWebViewBackHandler = () => {
     if (webviewRef.current) {
       webviewRef.current.injectJavaScript(`
         document.querySelector('.burger-menu').click();
-        true; // Ensures the injection returns something to prevent a crash
+        true;
+      `);
+    }
+  };
+
+  const triggerGalleryMenu = () => {
+    if (webviewRef.current) {
+      webviewRef.current.injectJavaScript(`
+        document.querySelector('.sidebar-trigger.open').click();
+        true;
       `);
     }
   };
@@ -35,7 +44,7 @@ const useWebViewBackHandler = () => {
     setCanGoBack(canGoBack);
   };
 
-  return { webviewRef, handleNavigationStateChange, triggerBurgerMenu };
+  return { webviewRef, handleNavigationStateChange, triggerBurgerMenu, triggerGalleryMenu };
 };
 
 export default useWebViewBackHandler;
