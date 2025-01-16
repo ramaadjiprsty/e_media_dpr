@@ -1,7 +1,7 @@
 import React from 'react';
 import WebView from 'react-native-webview';
 import { StatusBar } from 'expo-status-bar';
-import URLs from '../../constants/url';
+import { URLs } from '../../constants/url';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomHeader from '../../components/CustomHeader';
 import { INJECTED_JAVASCRIPT } from '../../constants/injectedJavascript';
